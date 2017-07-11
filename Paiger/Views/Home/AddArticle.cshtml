@@ -1,0 +1,16 @@
+﻿@using Paiger.Models
+@model ArticleModel
+
+<div class="jumbotron">
+    <h1>Welcome!</h1>
+
+	<div asp-validation-summary="All"></div>
+    <form method="POST">
+      <div>Name: <input asp-for="Title" /></div>
+      <div>Email: <input asp-for="Link" /></div>
+      <div>Email: <input asp-for="Genre" /></div>
+      <div>Email: <input asp-for="Publisher" /></div>
+      <div>Email: <input asp-for="DatePublished" /></div>
+      <input type="submit" />
+    </form>
+</div>
