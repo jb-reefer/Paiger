@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Paiger.Models;
 
 namespace Paiger.Controllers
 {
@@ -25,6 +26,33 @@ namespace Paiger.Controllers
             ViewData["Message"] = "Your contact page.";
 
             return View();
+        }
+
+        public IActionResult AddArticle()
+        {
+            return View("AddArticle");
+        }
+
+        public IActionResult AddPublisher()
+        {
+            return View("AddPublisher");
+        }
+
+        public IActionResult Publishers()
+        {
+            return View("Publishers");
+        }
+
+
+        [HttpPost]
+        public IActionResult Publisher(PublisherDTO publisher)
+        {
+            if (ModelState.IsValid)
+            {
+                Console.WriteLine(publisher.Name);
+            }
+
+            return new StatusCodeResult(200);
         }
 
         public IActionResult Error()
