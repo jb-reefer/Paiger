@@ -28,21 +28,30 @@ namespace Paiger.Controllers
             return View();
         }
 
-        public IActionResult AddArticle()
+        [HttpGet("Article")]
+        public IActionResult AddArticlePage()
         {
             return View("AddArticle");
         }
 
-        public IActionResult AddPublisher()
+        [HttpPost]
+        public IActionResult Article(ArticleModel article)
         {
-            return View("AddPublisher");
+            Console.WriteLine(article);
+            return RedirectToAction("Index");
         }
+
 
         public IActionResult Publishers()
         {
             return View("Publishers");
         }
 
+        [HttpGet("Publisher")]
+        public IActionResult AddPublisherPage()
+        {
+            return View("AddPublisher");
+        }
 
         [HttpPost]
         public IActionResult Publisher(PublisherDTO publisher)

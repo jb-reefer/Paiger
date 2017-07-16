@@ -67,11 +67,16 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2>Application uses</h2>
-		@Html.Raw("<i>Test test test</i>")
-		<a href="/Articles/AddArticle">Link to adding article</a>
+        <h2>Pages under construction</h2>
+
+		<a >Link to adding article</a>
         <ul>
-            <li>Sample pages using ASP.NET Core MVC</li>
+            <li>
+                @Html.ActionLink("Add Article", "AddArticlePage")
+            </li>
+            <li>
+                @Html.ActionLink("Add Publisher", "AddPublisherPage")
+            </li>
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
             <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
         </ul>
