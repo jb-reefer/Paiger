@@ -1,0 +1,42 @@
+﻿@using Paiger.Models
+@model Paiger.Models.Article
+
+<style>
+    .row {
+        padding: 1em;
+    }
+</style>
+
+<div class="row">
+    <h2 class="page-header">Add article</h2>
+
+    <div asp-validation-summary="All"></div>
+    <form method="POST">
+        <div class="row">
+            <div class="col-md-4">
+                Title: <input asp-for="Title"/>
+            </div>
+            <div class="col-md-4">
+                Link: <input asp-for="Link"/>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-4">
+                @* TODO: Drop downs for Genre *@
+                Genre: <input asp-for="Genre"/>
+            </div>
+            <div class="col-md-4">
+                @* TODO: Drop downs for Publisher *@
+                Publisher: <input asp-for="Publisher"/>
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                Date Published: <input type="date" asp-for="DatePublished" />
+            </div>
+        </div>
+        <input type="submit" formaction="/Home/Article" value="Add">
+    </form>
+</div>

@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Paiger.Models;
 
@@ -28,6 +26,16 @@ namespace Paiger.Controllers
             return View();
         }
 
+
+        public IActionResult Error()
+        {
+            return View();
+        }
+    }
+
+    public class AdminController : Controller
+    {
+
         [HttpGet("Article")]
         public IActionResult AddArticlePage()
         {
@@ -35,16 +43,54 @@ namespace Paiger.Controllers
         }
 
         [HttpPost]
-        public IActionResult Article(ArticleModel article)
+        public IActionResult Article(Article article)
         {
             Console.WriteLine(article);
-            return RedirectToAction("Index");
+            return RedirectToAction("Articles");
+        }
+
+        public IActionResult Articles()
+        {
+            var articles = new List<Article>
+            {
+                new Article
+                {
+                    Publisher = "USA Today",
+                    DatePublished = DateTime.Now,
+                    Genre = { "Porn, Hats" },
+                    Link = new Uri("https://buzzfeed.com"),
+                    Title = "Porn hats for sale"
+                },
+                new Article
+                {
+                    Publisher = "USA Today",
+                    DatePublished = DateTime.Now,
+                    Genre = { "Porn, Hats" },
+                    Link = new Uri("https://buzzfeed.com"),
+                    Title = "Danielle Page: My vag"
+                }
+            };
+
+            return View("Articles", articles);
         }
 
 
         public IActionResult Publishers()
         {
-            return View("Publishers");
+            var publishers = new List<Publisher>
+            {
+                new Publisher
+                {
+                    Name = "New York Times",
+                    Homepage = new Uri("https://nytimes.com")
+                },
+                new Publisher
+                {
+                    Name = "USA Today",
+                    Homepage = new Uri("https://usatoday.com")
+                }
+            };
+            return View("Publishers", publishers);
         }
 
         [HttpGet("Publisher")]
@@ -54,19 +100,14 @@ namespace Paiger.Controllers
         }
 
         [HttpPost]
-        public IActionResult Publisher(PublisherDTO publisher)
+        public IActionResult Publisher(Publisher publisher)
         {
             if (ModelState.IsValid)
             {
                 Console.WriteLine(publisher.Name);
             }
 
-            return new StatusCodeResult(200);
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            return new RedirectToActionResult("Publishers", "Home", null);
         }
     }
 }

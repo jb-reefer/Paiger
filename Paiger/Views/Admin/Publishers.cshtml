@@ -1,0 +1,16 @@
+﻿@using System.Collections.Generic
+@using Paiger.Models
+@model IList<Publisher>
+
+<div class="row">
+
+@{
+    foreach (var publisher in Model)
+    {
+        <div class="row">
+            <a href="@publisher.Homepage" class="btn-link col-md-4">@publisher.Name</a>
+        </div>
+  
+    }
+}
+</div>

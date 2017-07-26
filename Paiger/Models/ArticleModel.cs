@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc;
 
 
 namespace Paiger.Models
 {
-    public class ArticleModel
+    public class Article
     {
         [Required]
         public string Title { get; set; }
@@ -15,7 +15,7 @@ namespace Paiger.Models
 
         [Required]
         [MaxLength(100)]
-        public string Genre { get; set; }
+        public List<string> Genre { get; set; }
 
         [Required]
         [MinLength(5)]
@@ -24,7 +24,7 @@ namespace Paiger.Models
 
         [Required]
         public DateTime DatePublished { get; set; }
-
-
     }
+
+
 }

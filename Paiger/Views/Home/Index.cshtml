@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -72,10 +73,13 @@
 		<a >Link to adding article</a>
         <ul>
             <li>
-                @Html.ActionLink("Add Article", "AddArticlePage")
+                @Html.ActionLink("Add Article", "AddArticlePage", "Admin")
             </li>
             <li>
-                @Html.ActionLink("Add Publisher", "AddPublisherPage")
+                @Html.ActionLink("Add Publisher", "AddPublisherPage", "Admin")
+            </li>
+            <li>
+                @Html.ActionLink("Publishers", "Publishers", "Admin")
             </li>
             <li><a href="https://go.microsoft.com/fwlink/?LinkId=518004">Bower</a> for managing client-side libraries</li>
             <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>

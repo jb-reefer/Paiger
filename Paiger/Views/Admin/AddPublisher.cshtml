@@ -1,0 +1,23 @@
+@model Paiger.Models.Publisher
+
+@{
+    ViewData["Title"] = "Add Publisher";
+}
+
+<div class="row">
+    <form method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Publisher" style="padding: 1em;">
+        <div class="form-group">
+            <div class="col-md-10">
+                <p class="text-capitalize" style="padding: 1em 0em; ">Publisher image/icon:</p>
+                <input type="file" asp-for="Icon" />
+            </div>
+        </div>
+        <label for="publisherName">Publisher Name:</label>
+        <input id="publisherName" asp-for="Name" />
+        <div class="form-group">
+            <div class="col-md-10" style="padding: 1em">
+                <input type="submit" value="Upload" />
+            </div>
+        </div>
+    </form>
+</div>
