@@ -1,6 +1,6 @@
-@using System.Collections.Generic
-@model IEnumerable<Paiger.Models.Article>
-
+﻿@using System.Collections.Generic
+@using Pager.Models
+@model IList<Article>
 @{
     ViewData["Title"] = "Articles";
 }
@@ -14,13 +14,13 @@
     <thead>
         <tr>
                 <th>
-                    @Html.DisplayNameFor(model => model.Title)
+                    Title
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.Publisher)
+                    Publisher
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.DatePublished)
+                    DatePublished
                 </th>
             <th></th>
         </tr>

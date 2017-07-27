@@ -1,38 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Paiger.Models;
+using Pager.Models;
 
-namespace Paiger.Controllers
+namespace Pager.Controllers
 {
-    public class HomeController : Controller
-    {
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-
-        public IActionResult Error()
-        {
-            return View();
-        }
-    }
-
     public class AdminController : Controller
     {
 
@@ -51,25 +23,23 @@ namespace Paiger.Controllers
 
         public IActionResult Articles()
         {
-            var articles = new List<Article>
+             var articles = new List<Article>();
+            articles.Add(new Article
             {
-                new Article
-                {
-                    Publisher = "USA Today",
-                    DatePublished = DateTime.Now,
-                    Genre = { "Porn, Hats" },
-                    Link = new Uri("https://buzzfeed.com"),
-                    Title = "Porn hats for sale"
-                },
-                new Article
-                {
-                    Publisher = "USA Today",
-                    DatePublished = DateTime.Now,
-                    Genre = { "Porn, Hats" },
-                    Link = new Uri("https://buzzfeed.com"),
-                    Title = "Danielle Page: My vag"
-                }
-            };
+                Publisher = "USA Today",
+                DatePublished = DateTime.Now,
+                Genre = { "Sex writing", "Hats" },
+                Link = new Uri("https://buzzfeed.com"),
+                Title = "Porn hats for sale"
+            });
+            articles.Add(new Article
+            {
+                Publisher = "USA Today",
+                DatePublished = DateTime.Now,
+                Genre = { "Sex writing", "Cats" },
+                Link = new Uri("https://buzzfeed.com"),
+                Title = "Danielle Page: My vag"
+            });
 
             return View("Articles", articles);
         }

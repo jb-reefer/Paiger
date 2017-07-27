@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
 
-namespace Paiger.Models
+namespace Pager.Models
 {
     public class Publisher
     {
