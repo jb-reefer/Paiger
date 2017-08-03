@@ -22,10 +22,10 @@
         </div>
         <div class="row">
 
-            <div class="col-md-4">
+            @*<div class="col-md-4">
                 @* TODO: Drop downs for Genre *@
-                Genre: <input asp-for="Genre"/>
-            </div>
+                @*Genre: <input asp-for="Genre"/>
+            </div>*@
             <div class="col-md-4">
                 @* TODO: Drop downs for Publisher *@
                 Publisher: <input asp-for="Publisher"/>
@@ -37,6 +37,6 @@
                 Date Published: <input type="date" asp-for="DatePublished" />
             </div>
         </div>
-        <input type="submit" formaction="/Home/Article" value="Add">
+        <input type="submit" formaction="/Admin/Article" value="Add">
     </form>
 </div>

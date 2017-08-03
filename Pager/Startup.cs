@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Pager.Models;
 
 namespace Pager
 {
@@ -14,7 +15,9 @@ namespace Pager
                 .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
+                .AddJsonFile("StorageConfig.json", optional: false, reloadOnChange: true)
                 .AddEnvironmentVariables();
+
             Configuration = builder.Build();
         }
 
@@ -23,8 +26,15 @@ namespace Pager
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
-            services.AddMvc();
+			// http://www.dotnetcurry.com/visualstudio/1328/visual-studio-connected-services-aspnet-core-azure-storage
+			services.AddSingleton<IConfigurationRoot>(Configuration);
+            services.AddTransient<IStorageService, AzureStorageService>();
+            services.AddTransient<IPagerContext, PagerContext>();
+
+			// Add framework services.
+			services.AddMvc();
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -49,10 +59,6 @@ namespace Pager
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(
-                    name: "admin",
-                    template: "{controller=Admin}/{action=Index}/{id?}");
             });
         }
     }
